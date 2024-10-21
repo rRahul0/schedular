@@ -3,7 +3,7 @@ import poster from "../public/favicon.ico";
 import Link from "next/link";
 import { Button } from "../components/ui/button";
 import { ArrowRight, LinkIcon, Calendar, Clock } from "lucide-react";
-import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "../components/ui/card";
+import { Card, CardHeader, CardTitle, CardContent } from "../components/ui/card";
 import { howItWorks } from "../constants/index";
 import TestimonialCarousel from "../components/testimonials";
 
@@ -104,7 +104,7 @@ export default function Home() {
       </div>
 
       {/* CTA Section */}
-      <div className="bg-blue-600 text-white rounded-lg p-8 text-center">
+      <div className="bg-blue-600 text-white rounded-lg p-8 text-center mb-20">
         <h2 className="text-3xl font-bold mb-4">
           Ready to Simplify Your Scheduling?
         </h2>
