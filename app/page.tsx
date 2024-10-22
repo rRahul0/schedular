@@ -30,7 +30,8 @@ const features: Feature[] = [
   },
 ];
 
-export default function Home() {
+export default async function Home() {
+  
   return (
     <div className="w-11/12 mx-auto">
 
