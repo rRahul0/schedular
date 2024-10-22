@@ -1,3 +1,4 @@
+import { ElementType } from "react";
 import Image from "next/image";
 import poster from "../public/favicon.ico";
 import Link from "next/link";
@@ -8,7 +9,7 @@ import { howItWorks } from "../constants/index";
 import TestimonialCarousel from "../components/testimonials";
 
 interface Feature {
-  icon: any;
+  icon: ElementType;
   title: string;
   description: string;
 }

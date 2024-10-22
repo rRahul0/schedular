@@ -8,20 +8,29 @@ import { Button } from "@/components/ui/button";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { usernameschema } from "@/lib/validator";
+import useFetch from "@/hooks/use-fetch";
 
+import { updateUserName } from "@/actions/user";
+import { BarLoader } from "react-spinners";
 
 
 
 const Dashboard: React.FC = () => {
     const { isLoaded, user } = useUser();
     console.log(user);
-    const { register, handleSubmit, setValue, formState:{errors} } = useForm({
+    const { register, handleSubmit, setValue, formState: { errors } } = useForm({
         resolver: zodResolver(usernameschema),
     })
-    const onSubmit = async (data) => { }
     useEffect(() => {
-        setValue("username", user?.username)
+        setValue("username", user?.username);
     }, [isLoaded]);
+    const { loading, error, data, fn: fnUpdateUsername } = useFetch(updateUserName);
+    console.log("dashboard", error, data, loading);
+    const onSubmit = async (data: any) => {
+        // console.log("dashboard", data);
+        await fnUpdateUsername(data.username);
+    }
+
     return (
         <div className="space-y-8">
             <Card>
@@ -44,7 +53,9 @@ const Dashboard: React.FC = () => {
                             {errors.username && (
                                 <p className="text-red-500 text-sm mt-1">{errors.username?.message?.toString()}</p>
                             )}
+                            {/* {error?.message && <p className="text-red-500 text-sm mt-1">{error.message.toString()</p>} */}
                         </div>
+                        {loading && <BarLoader className="mb-4" width={"100%"} color="#36d7b7" />}
                         <Button type="submit">Update Username</Button>
                     </form>
                 </CardContent>

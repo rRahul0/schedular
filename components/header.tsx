@@ -8,14 +8,13 @@ import { PenBox } from 'lucide-react';
 import {
     SignInButton,
     SignedIn,
-    SignedOut,
-    UserButton
+    SignedOut
 } from '@clerk/nextjs'
 
 const Header: React.FC = async() => {
     await checkUser();
     return (
-        <nav className="mx-auto py-2 px-4 flex justify-between items-center shadow-md border-b-2 ">
+        <nav className="mx-auto py-2 px-4 flex justify-between items-center shadow-md border-b-2 bg-white">
             <Link href={"/"} className="flex items-center">
                 <Image src={logo} alt="logo" width={10} height={10} className='h-16 w-auto' />
             </Link>
